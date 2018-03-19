@@ -1,0 +1,31 @@
+﻿@model RedMeeting.OutlookAddInWeb.Models.TokenResult
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Authorize</title>
+</head>
+<body>
+    <div>
+        @ViewBag.error
+    </div>
+    <div>
+        
+    </div>
+    <script src="/Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="/configs.js" type="text/javascript"></script>
+    <script src="/authService.js" type="text/javascript"></script>
+    <script src="/authResponseHandler.js" type="text/javascript"></script>
+    <script>
+        var hash = 'access_token=@Model.access_token&expires_in=@Model.expires_in&state=@Model.state';
+        window.opener.recieveAuthorization(hash);
+        window.close();
+    </script>
+</body>
+</html>

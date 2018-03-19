@@ -1,0 +1,2 @@
+bin\Debug\app.publish\OfficeAppManifests\RedMeeting.OutlookAddInManifest.xml
+D:\KH\R&D\RedMeeting.OutlookAddIn\RedMeeting.OutlookAddIn\bin\Debug\app.publish\RedMeeting.OutlookAddIn.app

@@ -1,0 +1,2 @@
+D:\KH\R&D\RedMeeting.OutlookAddIn\RedMeeting.OutlookAddIn\obj\Debug\RedMeeting.OutlookAddIn.csproj.CoreCompileInputs.cache
+C:\Projects\medi\RedMeeting.OutlookAddIn\RedMeeting.OutlookAddIn\obj\Debug\RedMeeting.OutlookAddIn.csproj.CoreCompileInputs.cache

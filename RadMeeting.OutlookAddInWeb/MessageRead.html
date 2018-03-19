@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Red Meeting Outlook Addin</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="/configs.js" type="text/javascript"></script>
+    <script src="/commonService.js" type="text/javascript"></script>
+    <script src="/storageService.js" type="text/javascript"></script>
+    <script src="/authService.js" type="text/javascript"></script>
+    <script src="/MessageRead.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.min.css" />
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="Content/styles.css" />
+    <script>
+        function recieveAuthorization(hash) {
+            hash = hash.replace('#', '');
+            authService.handleTokenResponse(hash, function (token, error) {
+                if (error) {
+                    $('#welcomePanel').show();
+                    $('#homePanel').hide();
+                    return;
+                }
+                app.cacheToken = token;
+                $('#welcomePanel').hide();
+                $('#homePanel').show();
+                app.loadADUsers();
+            });
+        }
+    </script>
+</head>
+<body class="ms-font-xl">
+    <main class="ms-firstrun-instructionstep" id="welcomePanel" style="display:none;">
+        <section class="ms-firstrun-instructionstep__header">
+            <div class="">Helps you be productive at work.</div>
+        </section>
+        <section class="ms-firstrun-instructionstep__header">
+            <div class="ms-font-m ms-firstrun-instructionstep__welcome-intro"><span>Please click on the </span><span class="ms-fontWeight-semibold ">Continue</span><span> button and follow the steps.</span></div>
+        </section>
+        <p align="center">
+            <button id="btnContinue" class="popupButton ms-Button ms-Button--primary">
+                <span class="ms-Button-label">Continue!</span>
+            </button>
+        </p>
+        <div class="brand-logo"> Rad Meeting Outlook</div>
+    </main>
+    <main class="ms-firstrun-value" id="homePanel" style="display:none">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Scheduling a Meeting</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Meeting Type <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Event</a></li>
+                                <li><a href="#">Appointment</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="AttendanceMode">Attendance Mode</label>
+                        <select class="form-control" id="AttendanceMode">
+                            <option selected>Choose...</option>
+                            <option value="skypeorbusiness">Skype or Business</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="TimeZone">Time Zone</label>
+                        <select class="form-control" id="TimeZone">
+                            <option selected>Choose...</option>
+                            <option value="gmt-12">(GMT - 12:00) Enwetok, Kwaj</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="TimeZone">Time Zone</label>
+                        <select class="form-control" id="TimeZone">
+                            <option selected>Choose...</option>
+                            <option value="gmt-12">(GMT - 12:00) Enwetok, Kwaj</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="MeetingStartTime">Meeting Start Time</label>
+                        <input type="date" class="form-control" id="MeetingStartTime" placeholder="Meeting start time">
+                    </div>
+                    <div class="form-group">
+                        <label for="MeetingEndTime">Meeting End Time</label>
+                        <input type="date" class="form-control" id="MeetingEndTime" placeholder="Meeting end time">
+                    </div>
+                    <p class="h6">Tasks</p>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="task1">
+                        <label class="custom-control-label" for="task1">Task 1<a class="map-attendees" data-taskId="task1">(Add Attendee)</a></label>
+                        <input type="hidden" class="user-mapping-value" />
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="task2">
+                        <label class="custom-control-label" for="task2">Task 2<a class="map-attendees" data-taskId="task2">(Add Attendee)</a></label>
+                        <input type="hidden" class="user-mapping-value" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+    <div id="loading" class="spinner"></div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="ad-users-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Select Users</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="user-loading-status">Loading...</span>
+                    <div class="input-group">
+                        <input id="search-user" type="text" class="form-control" placeholder="Search user">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+                    </div>
+                    <ul class="list-group" style="margin-top:30px;"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btn-select-users">Map Selected Users</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

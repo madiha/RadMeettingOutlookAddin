@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadMeeting.OutlookAddIn", "RadMeeting.OutlookAddIn\RadMeeting.OutlookAddIn.csproj", "{667C8B1C-BDD5-406C-B0EE-9EE05FDE13E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadMeeting.OutlookAddInWeb", "RadMeeting.OutlookAddInWeb\RadMeeting.OutlookAddInWeb.csproj", "{10D58C28-0A1C-4B85-BAB9-077EBFF5481D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{667C8B1C-BDD5-406C-B0EE-9EE05FDE13E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667C8B1C-BDD5-406C-B0EE-9EE05FDE13E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667C8B1C-BDD5-406C-B0EE-9EE05FDE13E8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{667C8B1C-BDD5-406C-B0EE-9EE05FDE13E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667C8B1C-BDD5-406C-B0EE-9EE05FDE13E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{667C8B1C-BDD5-406C-B0EE-9EE05FDE13E8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{10D58C28-0A1C-4B85-BAB9-077EBFF5481D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10D58C28-0A1C-4B85-BAB9-077EBFF5481D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10D58C28-0A1C-4B85-BAB9-077EBFF5481D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10D58C28-0A1C-4B85-BAB9-077EBFF5481D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8147C773-00B8-4463-8DBF-74B60A839178}
+	EndGlobalSection
+EndGlobal
