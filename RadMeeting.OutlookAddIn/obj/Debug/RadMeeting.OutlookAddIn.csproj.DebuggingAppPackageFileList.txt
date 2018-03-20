@@ -1,0 +1,2 @@
+bin\Debug\OfficeAppManifests\RadMeeting.OutlookAddInManifest.xml
+D:\Jira2017\New-Project\from-git-hub\RadMeeting.OutlookAddIn\bin\Debug\RadMeeting.OutlookAddIn.debugapp

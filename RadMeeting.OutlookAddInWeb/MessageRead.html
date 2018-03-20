@@ -67,9 +67,6 @@
                                 <li><a href="#">Event</a></li>
                                 <li><a href="#">Appointment</a></li>
                             </ul>
-                            <ul>
-                                <li>Create new Meeting type</li>
-                            </ul>
                         </div>
                     </div>
                     <div class="form-group">
@@ -112,8 +109,11 @@
                         <label class="custom-control-label" for="task2">Task 2<a class="map-attendees" data-taskId="task2">(Map Attendee)</a></label>
                         <input type="hidden" class="user-mapping-value" />
                     </div>
-                    <button type="button" value="Schedule">Schedule</button>
-                    <button type="button" value="Cancel">Cancel</button>
+                    <label for="comment">Comment and notes:</label>
+                    <textarea class="form-control" rows="3" id="comment"></textarea>
+                    <br />
+                    <button type="button" class="btn btn-primary">Schedule</button>
+                    <button type="button" class="btn btn-primary">Cancel</button>
                 </form>
             </div>
         </div>

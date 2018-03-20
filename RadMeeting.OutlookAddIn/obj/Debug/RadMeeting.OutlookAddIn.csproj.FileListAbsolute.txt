@@ -2,3 +2,6 @@ C:\Users\kh\Downloads\RedMeeting.OutlookAddIn\RedMeeting.OutlookAddIn\RadMeeting
 C:\Projects\medi\RedMeeting.OutlookAddIn (1)\RedMeeting.OutlookAddIn\RadMeeting.OutlookAddIn\obj\Debug\RadMeeting.OutlookAddIn.csprojResolveAssemblyReference.cache
 C:\Projects\medi\RedMeeting.OutlookAddIn (1)\RedMeeting.OutlookAddIn\RadMeeting.OutlookAddIn\obj\Debug\RadMeeting.OutlookAddIn.csproj.CoreCompileInputs.cache
 C:\Projects\medi\RedMeeting.OutlookAddIn (1)\RedMeeting.OutlookAddIn\RadMeeting.OutlookAddIn\bin\Debug\RadMeeting.OutlookAddIn.dll.config
+D:\Jira2017\New-Project\from-git-hub\RadMeeting.OutlookAddIn\bin\Debug\RadMeeting.OutlookAddIn.dll.config
+D:\Jira2017\New-Project\from-git-hub\RadMeeting.OutlookAddIn\obj\Debug\RadMeeting.OutlookAddIn.csprojResolveAssemblyReference.cache
+D:\Jira2017\New-Project\from-git-hub\RadMeeting.OutlookAddIn\obj\Debug\RadMeeting.OutlookAddIn.csproj.CoreCompileInputs.cache
