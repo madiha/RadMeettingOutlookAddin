@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
      Name="RadMeeting.OutlookAddIn"
-     ProductID="{470f5c33-150a-4078-a5c4-9b1a83f5ccfc}"
+     ProductID="{3c0ca90e-dc7b-4341-b31c-aa218eabdd8e}"
      Version="1.0.0.0"
      SharePointMinVersion="15.0.0.0"
 >

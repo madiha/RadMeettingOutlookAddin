@@ -15,7 +15,7 @@ authService.buildAuthUrl = function (isHidden) {
         client_id: configs.appId,
         redirect_uri: redirectUri,
         scope: configs.scopes,
-        state: storageService.getItem('authState'),
+        state: storageService.getItem('authState') + '~' + authService.getEmailAddress(),
         nonce: storageService.getItem('authNonce'),
         response_mode: 'query'
     };

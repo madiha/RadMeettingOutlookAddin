@@ -45,7 +45,7 @@ app.initialize = function () {
                     if (!app.loadingADUserIsInProgress) {
 
                         if (app.graphAccessStatus === 401) {
-                            $('#user-loading-status').html('You are not authorized to access Active Directory user list.').css('color','#ff3300');
+                            $('#user-loading-status').html('You are not authorized to access Active Directory user list.').css('color', '#ff3300');
                             clearInterval(timer);
                             $('#modal-body-content-wrapper').hide();
                             return;
@@ -65,6 +65,40 @@ app.initialize = function () {
 app.openAuthenticationWindow = function () {
     var authUrl = authService.buildAuthUrl();
     window.open(authUrl, "_blank", "resizable=yes, scrollbars=yes, titlebar=false, width=400, height=500, top=10, left=10");
+    window.removeEventListener("storage", null, false);
+    window.addEventListener("storage", app.handleTokenRecievedEvent, false);
+}
+
+app.handleTokenRecievedEvent = function () {
+    debugger;
+    window.localStorage.clear();
+    var requestUri = '/api/account/GetAccount?id=' + authService.getEmailAddress();
+    Office.context.mailbox.getUserIdentityTokenAsync(function (asyncResult) {
+        var identityToken = asyncResult.value;
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: requestUri,
+            dataType: 'json',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "identityToken " + identityToken);
+            },
+            success: function (data) {
+                debugger;
+                app.cacheToken = data;
+                $('#welcomePanel').hide();
+                $('#homePanel').show();
+                app.loadADUsers();
+
+            }, error: function (xhr, ajaxOptions, throwError) {
+                debugger;
+                $('#welcomePanel').show();
+                $('#homePanel').hide();
+                return;
+            }
+        });
+
+    });
 }
 
 app.loadADUsers = function () {
